@@ -5,4 +5,5 @@ available("empire")
 
 #Herramientas para la creacion de paquetes
 library(usethis)
-use_readme_rmd()
+
+
