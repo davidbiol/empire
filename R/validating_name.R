@@ -5,5 +5,3 @@ available("empire")
 
 #Herramientas para la creacion de paquetes
 library(usethis)
-
-
