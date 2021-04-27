@@ -1,4 +1,3 @@
-
 library(mice)
 #uses pmm (predictive mean matching)
 
