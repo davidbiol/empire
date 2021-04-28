@@ -2,7 +2,7 @@ Package: empire
 Type: Package
 Title: Estimation of Missing Data Using Penalized Iterative Regressions
 Version: 0.1.0
-Authors@R: c(person("David", "Gutiérrez-Duque", role = c("aut","cre"),  
+Author: c(person("David", "Gutiérrez-Duque", role = c("aut","cre"),  
     email = "davidgd2015@gmail.com")
     person("Lorenzo", "Martínez-Hernández", role = c("aut"), 
     email = "lorenzo.martinez_h@ucaldas.edu.co "))

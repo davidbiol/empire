@@ -1,7 +1,7 @@
 library(glmnet)
 #Algoritmo datos faltantes
 
-View(iris)
+
 ## NA RANDOM
 irisa <- iris[,1:4]
 i=1
@@ -12,7 +12,7 @@ while(i<=n){
   irisa[r,c] = NA
   i=i+1
 }
-View(irisa)
+
 all(1 != c(2,1))
 #Ejemplo tabla1.5
 x1 <- c(1.42, 1.40, 1.40, 1.54, 1.30, 1.20, 1.50, 1.60, 1.41, 1.34)
@@ -25,7 +25,7 @@ a <- data.frame(x1,x2,x3,x4)
 cantidad.df <- function(x){
   length(which(is.na(x)))
 }
-cantidad.df((irisa))
+
 
 
 
@@ -45,7 +45,7 @@ posicion.df <- function(x, i=1, p=1, e=c()){
   e <- data.frame(row=e[seq(1,(p-1),2)], col=e[seq(2,(p-1),2)]) #data.frame con col y row
   print(e)
 }
-posicion.df(irisa)
+
 
 
 #Determinar datos faltantes
@@ -225,10 +225,10 @@ determinar.ru.df <- function(x, i=1, p=1, e=c()){
 
 }
 
-est.ru <- determinar.ru.df(irisa)
-est.ru
-summary(est.ru)
-est.ru$posicion
-est.ru$valest
-est.ru$valestRidge
-est.ru$datosnuevos
+#est.ru <- determinar.ru.df(irisa)
+# est.ru
+# summary(est.ru)
+# est.ru$posicion
+# est.ru$valest
+# est.ru$valestRidge
+# est.ru$datosnuevos

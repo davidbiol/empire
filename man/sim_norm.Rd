@@ -12,11 +12,19 @@ sim_norm(
 )
 }
 \arguments{
-
+n
+k
+mean.v
 }
 \description{
-Prints 'Hello, world!'.
+Generates simulated data sets with normality (rnorm) or without normality (rpois).
 }
 \examples{
-hello()
+#Normal data set
+data_ej_norm <- sim_norm(n = 100,k = 3, normality=TRUE)
+sapply(data_ej, shapiro.test)
+
+#No normal data set
+data_ej_no_norm <- sim_norm(n = 100, lambda = 4, normality = FALSE)
+sapply(data_ej_no_norm, shapiro.test)
 }
