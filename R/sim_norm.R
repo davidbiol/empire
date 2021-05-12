@@ -1,14 +1,14 @@
 
-# Simulate data with or without normality
+#' Simulate data with or without normality
+#' Generates simulated data sets with normality (rnorm) or without normality (rpois).
+#' @param n Number of individuals
+#' @param k Number of variables
+#' @param mean.v A vector of means
+#' @param sd.v A vector of standard deviations
+#' @param lambda Lambda value for Poisson distribution
+#' @param normality Normality in data set
 #'
-#' @param n
-#' @param k
-#' @param mean.v
-#' @param sd.v
-#' @param lambda
-#' @param normality
-#'
-#' @return
+#' @return data.frame
 #' @export
 #'
 #' @examples
@@ -34,4 +34,3 @@ sim_norm <- function(n, k=3, mean.v=rep(0,k), sd.v=rep(1,k), lambda, normality=T
     return(data_sim)
   }
 }
-
