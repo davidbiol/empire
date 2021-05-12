@@ -7,15 +7,27 @@
 sim_distr(n, k = 3, distr, ...)
 }
 \arguments{
-\item{n}{number of observations}
+\item{n}{number of observations.}
 
-\item{k}{number of variables}
+\item{k}{number of variables.}
 
-\item{...}{}
+\item{distr}{the distribution to be used. This must be one of "normal", "exponential", "poisson" or "weibull".}
+
+\item{...}{arguments specific to each distribution. See \code{\link[stats:rnorm]{rnorm}}, \code{\link[stats:rexp]{rexp}}, \code{\link[stats:rpois]{rpois}}, \code{\link[stats:rweibull]{rweibull}} to know these arguments.}
 }
 \value{
-sim_distr gives a data frame with the observations as rows and the variables as columns
+\code{sim_distr} gives a data frame with the observations as rows and the variables as columns
 }
 \description{
 Simulate data variables with known distributions
+}
+\examples{
+
+}
+\seealso{
+\code{\link[stats:rexp]{rexp}}
+\code{\link[stats:rnorm]{rnorm}}
+\code{\link[stats:rexp]{rexp}}
+\code{\link[stats:rpois]{rpois}}
+\code{\link[stats:rweibull]{rweibull}}
 }
