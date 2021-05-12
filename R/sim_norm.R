@@ -1,21 +1,28 @@
 
-# Simulate data with or without normality --------------------------------
-sim_norm <- function(n, k=3, mean.v=rep(0,k), sd.v=rep(1,k), lambda, normality=TRUE){
+# Simulate data variables with or without normality --------------------------------
+sim_norm <- function(n, k=3, distr, mean.v=rep(0,k), sd.v=rep(1,k), lambda=3, shape=1){
   data_sim <- data.frame(matrix(ncol=k, nrow=n))
-  if (normality) {
+
+  if (distr=="Normal") {
     for(i in seq_len(k)){
-      rnorm(n=n, mean=mean.v[i], sd=sd.v[i])-> data_sim[i]
+      stats::rnorm(n, mean=mean.v[i], sd=sd.v[i])-> data_sim[i]
     }
     return(data_sim)
-  }
-  else {
+  } else if (distr=="Poisson") {
     for(i in seq_len(k)){
-      rpois(n=n, lambda=lambda)-> data_sim[i]
+      stats::rpois(n, lambda)-> data_sim[i]
     }
     return(data_sim)
+  } else if (distr=="Weibull") {
+    for(i in seq_len(k)){
+      stats::rweibull(n,shape)-> data_sim[i]
+    }
+    return(data_sim)
+  } else {
+    warning("There is not any distribution (distr) set. Distribution could be Normal, Poisson or Weibull")
   }
 }
-
+sim_norm(n=100, k=4, distr="Weibull", shape=1)
 library(MASS)
 mu <- c(X1 = 0, X2=0, Y = 0)
 R <- matrix(c(1, 0.5,0.5,
@@ -52,19 +59,25 @@ mvn(data_mvrnorm, mvnTest = "energy")
 
 #-----------------------------------------
 
-#mvrnorm tester
-iterations <- 1000
+#Distribution tester
+iterations <- 100
 mrdsk <- mrdku <- roy <- dht <- ene <- vector()
 for (i in seq_len(iterations)){
   #Simulate data
   library(MASS)
-  mu <- c(runif(1,0,100), runif(1,0,100),runif(1,0,100), runif(1,0,100)) #Means are random between 0 an 100
-  R <- matrix(c(1, 0.5,0.5,0.5,
-                0.5,1,0.5,0.5,
-                0.5,0.5,1,0.5,
-                0.5,0.5,0.5, 1),
-              nrow = 4, ncol = 4) #I will suppose homocedasticity
-  data_mvrnorm <- mvrnorm(100, mu=mu, Sigma=R)
+  #mu <- c(runif(1,0,100), runif(1,0,100),runif(1,0,100), runif(1,0,100)) #Means are random between 0 an 100
+
+  # R <- matrix(c(1, 0.5,0.5,0.5,
+  #               0.5,1,0.5,0.5,
+  #               0.5,0.5,1,0.5,
+  #               0.5,0.5,0.5, 1),
+  #             nrow = 4, ncol = 4) #Suppose homocedasticity
+
+  #Distribution
+  #data_mvrnorm <- mvrnorm(100, mu=mu, Sigma=R)
+  #data_weibull <- sim_norm(n=100, k=3, distr="Weibull", shape=1)
+  data_poisson <- sim_norm(n=100, k=3, distr="Poisson", )
+
   #Test
   mrdsk[i] <- mvn(data_mvrnorm, mvnTest = "mardia")$multivariateNormality$Result[1]
   mrdku[i] <- mvn(data_mvrnorm, mvnTest = "mardia")$multivariateNormality$Result[2]
@@ -76,10 +89,11 @@ for (i in seq_len(iterations)){
 #Data frame with results
 
 
-par(mfrow=c(2,3))
+par(mfrow=c(3,2))
 pie(table(mrdsk), main="mrdsk")
 pie(table(mrdku), main="mrdku")
 pie(table(roy), main="roy")
 pie(table(dht), main="dht")
 pie(table(ene), main="ene")
 
+plot(rweibull(10, shape=1))
