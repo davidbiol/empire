@@ -16,6 +16,11 @@ You can install the released version of empire from
 ``` r
 install.packages("empire")
 ```
+Or you can install empire like so:
+
+``` r
+devtools::install_github("davidbiol/empire")
+```
 
 ## Example
 
