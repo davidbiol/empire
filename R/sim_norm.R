@@ -1,6 +1,6 @@
 
-#' Simulate data with or without normality
-#' Generates simulated data sets with normality (rnorm) or without normality (rpois).
+#' @title Simulate data with or without normality
+#' @description Generates simulated data sets with normality (rnorm) or without normality (rpois).
 #' @param n Number of individuals
 #' @param k Number of variables
 #' @param mean.v A vector of means

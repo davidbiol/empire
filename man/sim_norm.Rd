@@ -2,8 +2,7 @@
 % Please edit documentation in R/sim_norm.R
 \name{sim_norm}
 \alias{sim_norm}
-\title{Simulate data with or without normality
-Generates simulated data sets with normality (rnorm) or without normality (rpois).}
+\title{Simulate data with or without normality}
 \usage{
 sim_norm(
   n,
@@ -31,7 +30,6 @@ sim_norm(
 data.frame
 }
 \description{
-Simulate data with or without normality
 Generates simulated data sets with normality (rnorm) or without normality (rpois).
 }
 \examples{
