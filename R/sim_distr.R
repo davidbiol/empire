@@ -1,28 +1,34 @@
 
-# Simulate data variables with or without normality --------------------------------
-sim_norm <- function(n, k=3, distr, mean.v=rep(0,k), sd.v=rep(1,k), lambda=3, shape=1){
-  data_sim <- data.frame(matrix(ncol=k, nrow=n))
+#' @title Simulate data variables with known distributions
+#'
+#'
+#' @param n number of observations
+#' @param k number of variables
+#' @param distr
+#' @param ...
+#'
+#' @return
+#' sim_distr gives a data frame with the observations as rows and the variables as columns
+#' @export
+#'
+#' @examples
+sim_distr <- function(n, k=3, distr, ...){
 
-  if (distr=="Normal") {
-    for(i in seq_len(k)){
-      stats::rnorm(n, mean=mean.v[i], sd=sd.v[i])-> data_sim[i]
-    }
-    return(data_sim)
-  } else if (distr=="Poisson") {
-    for(i in seq_len(k)){
-      stats::rpois(n, lambda)-> data_sim[i]
-    }
-    return(data_sim)
-  } else if (distr=="Weibull") {
-    for(i in seq_len(k)){
-      stats::rweibull(n,shape)-> data_sim[i]
-    }
-    return(data_sim)
-  } else {
-    warning("There is not any distribution (distr) set. Distribution could be Normal, Poisson or Weibull")
+  df <- data.frame(matrix(ncol=k, nrow=n))
+  rdistr <- switch(distr,
+         "Normal" = stats::rnorm(n, ...),
+         "Exponential" = stats::rexp(n, ...),
+         "Poisson" = stats::rpois(n, ...),
+         "Weibull" = stats::rweibull(n, ...),
+         stop("Distribution unknown, try with a known distribution. See ?sim_norm 'distr' for help"))
+
+  for(i in seq_len(k)) {
+    rdistr -> df[i]
   }
+  return(df)
+
 }
-sim_norm(n=100, k=4, distr="Weibull", shape=1)
+
 library(MASS)
 mu <- c(X1 = 0, X2=0, Y = 0)
 R <- matrix(c(1, 0.5,0.5,
@@ -74,16 +80,17 @@ for (i in seq_len(iterations)){
   #             nrow = 4, ncol = 4) #Suppose homocedasticity
 
   #Distribution
-  #data_mvrnorm <- mvrnorm(100, mu=mu, Sigma=R)
-  #data_weibull <- sim_norm(n=100, k=3, distr="Weibull", shape=1)
-  data_poisson <- sim_norm(n=100, k=3, distr="Poisson", )
+  #data_sim <- mvrnorm(100, mu=mu, Sigma=R)
+  data_sim <- sim_norm(n=100, k=3, distr="Weibull", shape=1)
+  #data_sim <- sim_norm(n=100, k=3, distr="Poisson", lambda = 4)
+  #data_sim <- sim_norm(n=50, k=3, distr="Exponential")
 
   #Test
-  mrdsk[i] <- mvn(data_mvrnorm, mvnTest = "mardia")$multivariateNormality$Result[1]
-  mrdku[i] <- mvn(data_mvrnorm, mvnTest = "mardia")$multivariateNormality$Result[2]
-  roy[i] <- mvn(data_mvrnorm, mvnTest = "royston")$multivariateNormality$MVN
-  dht[i] <- mvn(data_mvrnorm, mvnTest = "dh")$multivariateNormality$MVN
-  ene[i] <- mvn(data_mvrnorm, mvnTest = "energy")$multivariateNormality$MVN
+  mrdsk[i] <- mvn(data_sim, mvnTest = "mardia")$multivariateNormality$Result[1]
+  mrdku[i] <- mvn(data_sim, mvnTest = "mardia")$multivariateNormality$Result[2]
+  roy[i] <- mvn(data_sim, mvnTest = "royston")$multivariateNormality$MVN
+  dht[i] <- mvn(data_sim, mvnTest = "dh")$multivariateNormality$MVN
+  ene[i] <- mvn(data_sim, mvnTest = "energy")$multivariateNormality$MVN
 }
 
 #Data frame with results
@@ -96,4 +103,3 @@ pie(table(roy), main="roy")
 pie(table(dht), main="dht")
 pie(table(ene), main="ene")
 
-plot(rweibull(10, shape=1))
