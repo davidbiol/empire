@@ -9,8 +9,11 @@ Author: c(person("David", "Gutiérrez-Duque", role = c("aut","cre"),
 Maintainer: David Gutiérrez Duque <davidgd2015@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/davidbiol/empire
 BugReports: https://github.com/davidbiol/empire/issues
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

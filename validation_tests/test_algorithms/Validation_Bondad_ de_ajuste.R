@@ -24,8 +24,8 @@ for (q in c(1:7)){
 v=1
 while(v<=10){
 w=1
-data_validation <- data.frame("Time differences in secs" = double(), "err.alg.r" = double(),"err.median" = double(), 
-                              "err.ridge.p" = double(), "err.alg"= double(), "err.mean" = double(), "err.ridge.u" = double(), 
+data_validation <- data.frame("Time differences in secs" = double(), "err.alg.r" = double(),"err.median" = double(),
+                              "err.ridge.p" = double(), "err.alg"= double(), "err.mean" = double(), "err.ridge.u" = double(),
                               "err.knn" = double(), "err.emb" = double())
 
 while(w<=10){
@@ -61,7 +61,7 @@ while(w<=10){
       #     t=t+1
       #   }
       # }
-      
+
       #Estimador
       knn.imputed <- impute.knn(as.matrix(wine1))
       amelia.imputed <- amelia(wine1)
@@ -70,7 +70,7 @@ while(w<=10){
       est.median <- determinar.median.df(wine1)
       est.rp <- determinar.rp.df(wine1)
 
-      
+
       ##Obtener Valores reales y Obtener valor imputado por knn
       j=1
       valreal = c()
@@ -88,7 +88,7 @@ while(w<=10){
         j=j+1
       }
       #Numero de condición
-      
+
       # kappa(est.ru$datosnuevos)
       # kappa(est.mean$datosnuevos)
       # kappa(est.median$datosnuevos)
@@ -96,12 +96,12 @@ while(w<=10){
       # kappa(est.rp$datosnuevos)
       # kappa(est.rp$datosridge)
       # kappa(iris[1:4])
-      
 
 
-      
+
+
       ##Validación por menor error relativo
-      
+
       err.alg <- round((abs(est.ru$valest-valreal)/valreal),6)
       err.mean <- round((abs(est.mean$valest-valreal)/valreal),6)
       err.median <- round((abs(est.median$valest-valreal)/valreal),6)
@@ -110,8 +110,8 @@ while(w<=10){
       err.ridge.p <- round((abs(est.rp$valestRidge-valreal)/valreal),6)
       err.knn <- round((abs(knn.iv-valreal)/valreal),6)
       err.emb <- round((abs(emb.iv-valreal)/valreal),6)
-      
-      validationData <- data.frame(est.ru$valest, est.mean$valest, est.median$valest, est.ru$valestRidge, est.rp$valest, est.rp$valestRidge, 
+
+      validationData <- data.frame(est.ru$valest, est.mean$valest, est.median$valest, est.ru$valestRidge, est.rp$valest, est.rp$valestRidge,
                                    knn.iv, emb.iv, valreal, err.alg, err.mean, err.median,err.ridge.u, err.alg.r, err.ridge.p, err.knn, err.emb)
       Best <- c()
       for(k in seq(1:nrow(validationData))){
@@ -122,7 +122,7 @@ while(w<=10){
         }
       }
       validationData = cbind(validationData, Best)
-      
+
       # utilizar chi cuadrado para observar si es mayor significativamente
       if (length(table(validationData$Best))==1){
         best.alg.total[i] <- names(table(Best))
