@@ -1,10 +1,10 @@
 
 #' @title Simulate data variables with known distributions
 #'
-#' @param n number of observations.
-#' @param k number of variables.
-#' @param distr the distribution to be used. This must be one of "normal", "exponential", "poisson", "weibull", "chisquare", "gamma" or "uniform".
-#' @param ... arguments specific to each distribution. See \code{\link[stats:rnorm]{rnorm}}, \code{\link[stats:rexp]{rexp}}, \code{\link[stats:rpois]{rpois}}, \code{\link[stats:rweibull]{rweibull}}, \code{\link[stats:rchisq]{rchisq}}, \code{\link[stats:rgamma]{rgamma}}, \code{\link[stats:runif]{runif}} to know these arguments.
+#' @param n Number of observations.
+#' @param k Number of variables.
+#' @param distr The distribution to be used. This must be one of "normal", "exponential", "poisson", "weibull", "chisquare", "gamma" or "uniform".
+#' @param ... Arguments specific to each distribution. See \code{\link[stats:rnorm]{rnorm}}, \code{\link[stats:rexp]{rexp}}, \code{\link[stats:rpois]{rpois}}, \code{\link[stats:rweibull]{rweibull}}, \code{\link[stats:rchisq]{rchisq}}, \code{\link[stats:rgamma]{rgamma}}, \code{\link[stats:runif]{runif}} to know these arguments.
 #'
 #' @return
 #' \code{sim_distr} gives a data frame with the observations as rows and the variables as columns

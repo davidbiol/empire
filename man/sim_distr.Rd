@@ -4,16 +4,16 @@
 \alias{sim_distr}
 \title{Simulate data variables with known distributions}
 \usage{
-sim_distr(n, k = 3, distr, ...)
+sim_distr(n, k = 3, distr = "normal", ...)
 }
 \arguments{
-\item{n}{number of observations.}
+\item{n}{Number of observations.}
 
-\item{k}{number of variables.}
+\item{k}{Number of variables.}
 
-\item{distr}{the distribution to be used. This must be one of "normal", "exponential", "poisson", "weibull", "chisquare", "gamma" or "uniform".}
+\item{distr}{The distribution to be used. This must be one of "normal", "exponential", "poisson", "weibull", "chisquare", "gamma" or "uniform".}
 
-\item{...}{arguments specific to each distribution. See \code{\link[stats:rnorm]{rnorm}}, \code{\link[stats:rexp]{rexp}}, \code{\link[stats:rpois]{rpois}}, \code{\link[stats:rweibull]{rweibull}}, \code{\link[stats:rchisq]{rchisq}}, \code{\link[stats:rgamma]{rgamma}}, \code{\link[stats:runif]{runif}} to know these arguments.}
+\item{...}{Arguments specific to each distribution. See \code{\link[stats:rnorm]{rnorm}}, \code{\link[stats:rexp]{rexp}}, \code{\link[stats:rpois]{rpois}}, \code{\link[stats:rweibull]{rweibull}}, \code{\link[stats:rchisq]{rchisq}}, \code{\link[stats:rgamma]{rgamma}}, \code{\link[stats:runif]{runif}} to know these arguments.}
 }
 \value{
 \code{sim_distr} gives a data frame with the observations as rows and the variables as columns
