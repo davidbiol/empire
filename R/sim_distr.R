@@ -20,7 +20,9 @@
 #' \code{\link[stats:rgamma]{rgamma}},
 #' \code{\link[stats:runif]{runif}}.
 
-sim_distr <- function(n, k = 3, distr, ...){
+sim_distr <- function(n, k = 3, distr="normal", ...){
+
+  rlang::arg_match0(distr, c("normal", "exponential", "poisson", "weibull", "chisquare", "gamma", "uniform"))
 
   df <- data.frame(matrix(ncol=k, nrow=n))
   rdistr <- switch(distr,
@@ -30,8 +32,7 @@ sim_distr <- function(n, k = 3, distr, ...){
          "weibull" = stats::rweibull(n, ...),
          "chisquare" = stats::rchisq(n, ...),
          "gamma" = stats::rgamma(n, ...),
-         "uniform" = stats::runif(n, ...),
-         stop("Distribution unknown, try with a known distribution. See ?sim_norm 'distr' for help"))
+         "uniform" = stats::runif(n, ...))
 
   for(i in seq_len(k)) {
     rdistr -> df[i]
