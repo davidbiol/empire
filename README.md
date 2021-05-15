@@ -18,7 +18,8 @@ install.packages("empire")
 ```
 Or you can install empire like so:
 
-``` r
+``` {r, eval=False)
+#install.packages("devtools")
 devtools::install_github("davidbiol/empire")
 ```
 
