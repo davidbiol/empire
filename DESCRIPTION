@@ -13,8 +13,6 @@ Authors@R:
            role = c("aut"),
            email = "lorenzo.martinez_h@ucaldas.edu.co "))
 
-    person("Lorenzo", "Martínez-Hernández", role = c("aut"), 
-    email = "lorenzo.martinez_h@ucaldas.edu.co "))
 Maintainer: David Gutiérrez Duque <davidgd2015@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
