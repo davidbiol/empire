@@ -32,13 +32,6 @@ library(empire)
 ## basic example code
 ```
 
-Or you can install empire like so:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("davidbiol/empire")
-```
-
 What is special about using `README.Rmd` instead of just `README.md`?
 You can include R chunks like so:
 
