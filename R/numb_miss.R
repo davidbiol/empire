@@ -1,4 +1,4 @@
-#' Title Number of missing values in data
+#' Number of missing values in data
 #'
 #' @param data
 #'
@@ -6,6 +6,7 @@
 #' @export
 #'
 #' @examples
+#'
 
 numb_miss <- function(data){
   return(length(which(is.na(data))))

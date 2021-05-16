@@ -2,7 +2,7 @@
 % Please edit documentation in R/numb_miss.R
 \name{numb_miss}
 \alias{numb_miss}
-\title{Title Number of missing values in data}
+\title{Number of missing values in data}
 \usage{
 numb_miss(data)
 }
@@ -13,5 +13,8 @@ numb_miss(data)
 An integer number of total missing values in data
 }
 \description{
-Title Number of missing values in data
+Number of missing values in data
+}
+\examples{
+
 }
