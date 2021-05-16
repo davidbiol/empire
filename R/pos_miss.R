@@ -1,3 +1,11 @@
+#' Missing value position inside data set
+#'
+#' @param data
+#'
+#' @return
+#' @export
+#'
+#' @examples
 pos_miss <- function(data){
 
   df = data.frame(Row = vector(), Col = vector())
