@@ -8,6 +8,6 @@
 #' @examples
 #'
 
-numb_miss <- function(data){
+count_miss <- function(data){
   return(length(which(is.na(data))))
 }
