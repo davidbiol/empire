@@ -4,6 +4,8 @@
 # empire
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/davidbiol/empire/workflows/R-CMD-check/badge.svg)](https://github.com/davidbiol/empire/actions)
 <!-- badges: end -->
 
 The goal of empire is to …
@@ -16,12 +18,6 @@ You can install the released version of empire from
 ``` r
 install.packages("empire")
 ```
-Or you can install empire like so:
-
-``` {r, eval=False)
-# install.packages("devtools")
-devtools::install_github("davidbiol/empire")
-```
 
 ## Example
 
@@ -30,6 +26,13 @@ This is a basic example which shows you how to solve a common problem:
 ``` r
 library(empire)
 ## basic example code
+```
+
+Or you can install empire like so:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("davidbiol/empire")
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?
