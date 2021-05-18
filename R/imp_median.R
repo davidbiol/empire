@@ -1,6 +1,11 @@
-
-
-#Determinar datos faltantes
+#' Simple mean imputation of missing values
+#'
+#' @param data
+#'
+#' @return
+#' @export
+#'
+#' @examples
 imp_median <- function(data){
   positions <- pos_miss(data)
 

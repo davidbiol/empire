@@ -2,5 +2,6 @@
 
 export(count_miss)
 export(imp_mean)
+export(imp_median)
 export(pos_miss)
 export(sim_distr)
