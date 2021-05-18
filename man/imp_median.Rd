@@ -2,7 +2,7 @@
 % Please edit documentation in R/imp_median.R
 \name{imp_median}
 \alias{imp_median}
-\title{Simple mean imputation of missing values}
+\title{Simple median imputation of missing values}
 \usage{
 imp_median(data)
 }
@@ -13,5 +13,5 @@ imp_median(data)
 
 }
 \description{
-Simple mean imputation of missing values
+Simple median imputation of missing values
 }

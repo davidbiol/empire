@@ -1,4 +1,4 @@
-#' Simple mean imputation of missing values
+#' Simple median imputation of missing values
 #'
 #' @param data
 #'
@@ -13,7 +13,7 @@ imp_median <- function(data){
   new_data = data
 
   for(i in seq_len(nrow(positions))){
-    new_data[positions[i,1], positions[i,2]] <- median(data[, positions[i,2]], na.rm=TRUE)
+    new_data[positions[i,1], positions[i,2]] <- stats::median(data[, positions[i,2]], na.rm=TRUE)
     est_values[i] <- new_data[positions[i,1], positions[i,2]]
   }
 
