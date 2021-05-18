@@ -11,7 +11,7 @@ estimate_mlr <- function(data){
   positions <- pos_miss(data)
 
   estimate.mv <- function(v){
-    complete_data <- data[complete.cases(data),]
+    complete_data <- data[stats::complete.cases(data),]
     Y = as.matrix(complete_data[positions[v,2]])
     X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-(positions[v,2])]))
     XtX <- t(X)%*%X
@@ -32,8 +32,8 @@ estimate_mlr <- function(data){
       }
     }
 
-    # Include e1 in Global Env
-    assign("e1",e1,.GlobalEnv)
+    # Return e1
+    return(e1)
 
   }
 
@@ -44,8 +44,7 @@ estimate_mlr <- function(data){
     g = 1
     # Run estimate.mv() in each missing value
     for (mv in seq_len(nrow(positions))){
-      estimate.mv(mv)
-      old_est_values[g] <- e1
+      old_est_values[g] <- estimate.mv(mv)
       g=g+1
     }
     print(old_est_values)
@@ -60,8 +59,7 @@ estimate_mlr <- function(data){
     g=1
 
     for (mv in seq_len(nrow(positions))){
-      estimate.mv(mv)
-      new_est_values[g] <- e1
+      new_est_values[g] <- estimate.mv(mv)
       g=g+1
     }
 
