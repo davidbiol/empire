@@ -1,5 +1,5 @@
 # Estimate missing values using multiple linear regressions
-imp_mlr <- function(data){
+estimate_mlr <- function(data){
 
   positions <- pos_miss(data)
 

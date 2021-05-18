@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-imp_mean <- function(data){
+impute_mean <- function(data){
 
   positions <- pos_miss(data)
 

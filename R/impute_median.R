@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-imp_median <- function(data){
+impute_median <- function(data){
   positions <- pos_miss(data)
 
   est_values = vector()
