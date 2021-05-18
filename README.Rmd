@@ -28,6 +28,12 @@ You can install the released version of empire from [CRAN](https://CRAN.R-projec
 ``` r
 install.packages("empire")
 ```
+Or you can install empire like so:
+
+```{r, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("davidbiol/empire")
+```
 
 ## Example
 
@@ -37,14 +43,6 @@ This is a basic example which shows you how to solve a common problem:
 library(empire)
 ## basic example code
 ```
-
-Or you can install empire like so:
-
-```{r, eval=FALSE}
-# install.packages("devtools")
-devtools::install_github("davidbiol/empire")
-```
-
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
