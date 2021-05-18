@@ -1,4 +1,11 @@
-# Estimate missing values using multiple linear regressions
+#' Estimate missing values using multiple linear regressions
+#'
+#' @param data
+#'
+#' @return
+#' @export
+#'
+#' @examples
 estimate_mlr <- function(data){
 
   positions <- pos_miss(data)
