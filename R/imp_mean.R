@@ -13,9 +13,9 @@ imp_mean <- function(data){
   est_values = vector()
   new_data = data
 
-for(t in seq_len(nrow(positions))){
-  new_data[positions[t,1], positions[t,2]] <- mean(data[, positions[t,2]], na.rm=TRUE)
-  est_values[t] <- new_data[positions[t,1], positions[t,2]]
+for(i in seq_len(nrow(positions))){
+  new_data[positions[i,1], positions[i,2]] <- mean(data[, positions[i,2]], na.rm=TRUE)
+  est_values[i] <- new_data[positions[i,1], positions[i,2]]
 }
 
   # List
