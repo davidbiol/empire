@@ -1,0 +1,78 @@
+# Estimate missing values using multiple linear regressions
+imp_mlr <- function(data){
+
+  positions <- pos_miss(data)
+
+  estimate.mv <- function(v){
+    complete_data <- data[complete.cases(data),]
+    Y = as.matrix(complete_data[positions[v,2]])
+    X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-(positions[v,2])]))
+    XtX <- t(X)%*%X
+    XtX.1 <- solve(XtX)
+    B <- XtX.1%*%t(X)%*%Y # Calculate coefficients
+
+    regresion <- function(b1,b2){   # Regression function
+      B[b1]*data[positions[v,1],b2]
+    }
+
+
+    e1 <- B[1] # Value obtained with the regression
+    b=2
+    for (j in seq_len(ncol(data))){ # Omit the value in the target column, replacing in all columns except where the missing value lies
+      if (j != positions[v,2]){
+        e1 = e1 + regresion(b,j)
+        b=b+1
+      }
+    }
+
+    # Include e1 in Global Env
+    assign("e1",e1,.GlobalEnv)
+
+  }
+
+  # Iterate the estimators
+  repeat{
+    # old estimated values
+    old_est_values = vector()
+    g = 1
+    # Run estimate.mv() in each missing value
+    for (mv in seq_len(nrow(positions))){
+      estimate.mv(mv)
+      old_est_values[g] <- e1
+      g=g+1
+    }
+    print(old_est_values)
+
+    for(i in seq_len(nrow(positions))){
+      data[positions[i,1], positions[i,2]] <- old_est_values[i]
+    }
+
+
+    # new estimated values
+    new_est_values = vector()
+    g=1
+
+    for (mv in seq_len(nrow(positions))){
+      estimate.mv(mv)
+      new_est_values[g] <- e1
+      g=g+1
+    }
+
+    print(new_est_values)
+
+    for(i in seq_len(nrow(positions))){
+      data[positions[i,1], positions[i,2]] <- new_est_values[i]
+    }
+
+
+    # Exit test
+    conv <- old_est_values - new_est_values
+    print(conv)
+    ifelse(all((lapply(conv, abs) < 1e-12)==TRUE), break, next)
+
+  }
+
+  # List
+  my_list <- list("positions" = positions, "est_values" = new_est_values, "new_data" = data)
+
+}
