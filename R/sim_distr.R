@@ -24,6 +24,10 @@ sim_distr <- function(n, k = 3, distr, ...){
 
   df <- data.frame(matrix(ncol=k, nrow=n))
 
+  if (length(distr)==1){
+    distr=rep(distr, k)
+  }
+
   distr_args <- list(...)
   mean_arg <- c(distr_args$mean,distr_args$sd)
   poisson_arg <- c(distr_args$lambda)
@@ -45,11 +49,3 @@ sim_distr <- function(n, k = 3, distr, ...){
   return(df)
 
 }
-sim_distr(n=20, k=2, distr=c("normal", "poisso"), mean=2,sd=1, lambda=4)
-show_missings <- function(df) {
-  n <- sum(is.na(df))
-  cat("Missing values: ", n, "\n", sep = "")
-
-  invisible(df)
-}
-print(show_missings(a))
