@@ -32,30 +32,29 @@ sim_distr <- function(n, k, distr, ...){
 
   # Assign arguments to each distribution
   distr_args <- list(...)
-  normal_arg <- c(distr_args$mean, distr_args$sd)
+  normal_arg <- c(distr_args$mean, distr_args$sd) #assign mean=distr_args$mean...
   exp_arg <- c(distr_args$rate)
   poisson_arg <- c(distr_args$lambda)
   weibull_arg <- c(distr_args$shape, distr_args$scale)
   chisquare_arg <- c(distr_args$df, distr_args$ncp)
   gamma_arg <- c(distr_args$shape, distr_args$rate, distr_args$scale) #It can have issues
-  unif_arg <- vector(min=distr_args$min, max=distr_args$max)
-  print(unif_arg)
+  unif_arg <- c(min=distr_args$min, max=distr_args$max)
 
   for(i in seq_len(k)) {
     tryCatch(rlang::arg_match0(distr[i], c("normal", "exponential", "poisson", "weibull", "chisquare", "gamma", "uniform"), arg_nm = substitute("Distribution elements")))
 
     rdistr <- switch(distr[i],
-                     "normal" = stats::rnorm(n, normal_arg),
-                     "exponential" = stats::rexp(n, exp_arg),
-                     "poisson" = stats::rpois(n, poisson_arg),
-                     "weibull" = stats::rweibull(n, weibull_arg),
-                     "chisquare" = stats::rchisq(n, chisquare_arg),
-                     "gamma" = stats::rgamma(n, gamma_arg),
-                     "uniform" = stats::runif(n, unif_arg)) #It's not working
+                     "normal" = do.call(stats::rnorm, c(list(n), normal_arg)),
+                     "exponential" = do.call(stats::rexpc, c(list(n), exp_arg)),
+                     "poisson" = do.call(stats::rpois, c(list(n), poisson_arg)),
+                     "weibull" = do.call(stats::rweibull, c(list(n), weibull_arg)),
+                     "chisquare" = do.call(stats::rchisq, c(list(n), chisquare_arg)),
+                     "gamma" = do.call(stats::rgamma, c(list(n), gamma_arg)),
+                     "uniform" = do.call(stats::runif, c(list(n), unif_arg))) #It's not working
     rdistr -> df[i]
   }
   return(df)
 
 }
 sim_distr(n=20, k=3, distr="uniform", min=10, max=11)
-runif(10, 10,11)
+
