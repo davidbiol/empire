@@ -4,7 +4,7 @@
 \alias{sim_distr}
 \title{Simulate data variables with known distributions}
 \usage{
-sim_distr(n, k = 3, distr = "normal", ...)
+sim_distr(n, k = 3, distr, ...)
 }
 \arguments{
 \item{n}{Number of observations.}
