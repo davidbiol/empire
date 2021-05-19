@@ -44,7 +44,7 @@ for (i in seq_len(iterations)){
 
   #Distribution
   #data_sim <- mvrnorm(100, mu=mu, Sigma=R)
-  data_sim <- sim_distr(n=100, k=4, distr="exponential", rate=1)
+  data_sim <- sim_distr(n=100, k=4, distr=c("normal","exponential","poisson"))
   #data_sim <- sim_norm(n=100, k=3, distr="Poisson", lambda = 4)
   #data_sim <- sim_norm(n=50, k=3, distr="Exponential")
 

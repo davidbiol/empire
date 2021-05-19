@@ -20,17 +20,22 @@
 #' \code{\link[stats:rgamma]{rgamma}},
 #' \code{\link[stats:runif]{runif}}.
 
-sim_distr <- function(n, k = 3, distr="normal", ...){
-
-  rlang::arg_match0(distr, c("normal", "exponential", "poisson", "weibull", "chisquare", "gamma", "uniform"))
+sim_distr <- function(n, k = 3, distr, ...){
 
   df <- data.frame(matrix(ncol=k, nrow=n))
 
+  distr_args <- list(...)
+  mean_arg <- c(distr_args$mean,distr_args$sd)
+  poisson_arg <- c(distr_args$lambda)
+
+
   for(i in seq_len(k)) {
-    rdistr <- switch(distr,
-                     "normal" = stats::rnorm(n, ...),
+    tryCatch(rlang::arg_match0(distr[i], c("normal", "exponential", "poisson", "weibull", "chisquare", "gamma", "uniform"), arg_nm = substitute("Distribution elements")))
+
+    rdistr <- switch(distr[i],
+                     "normal" = stats::rnorm(n, mean_arg),
                      "exponential" = stats::rexp(n, ...),
-                     "poisson" = stats::rpois(n, ...),
+                     "poisson" = stats::rpois(n, poisson_arg),
                      "weibull" = stats::rweibull(n, ...),
                      "chisquare" = stats::rchisq(n, ...),
                      "gamma" = stats::rgamma(n, ...),
@@ -40,3 +45,11 @@ sim_distr <- function(n, k = 3, distr="normal", ...){
   return(df)
 
 }
+sim_distr(n=20, k=2, distr=c("normal", "poisso"), mean=2,sd=1, lambda=4)
+show_missings <- function(df) {
+  n <- sum(is.na(df))
+  cat("Missing values: ", n, "\n", sep = "")
+
+  invisible(df)
+}
+print(show_missings(a))
