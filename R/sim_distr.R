@@ -22,11 +22,13 @@
 
 sim_distr <- function(n, k = 3, distr, ...){
 
-  df <- data.frame(matrix(ncol=k, nrow=n))
-
   if (length(distr)==1){
     distr=rep(distr, k)
   }
+
+  tryCatch(if(length(distr)!=k) stop("The number of distributions ('distr') must be the same number of variables ('k').", call.=FALSE))
+
+  df <- data.frame(matrix(ncol=k, nrow=n))
 
   distr_args <- list(...)
   mean_arg <- c(distr_args$mean,distr_args$sd)
@@ -49,3 +51,6 @@ sim_distr <- function(n, k = 3, distr, ...){
   return(df)
 
 }
+sim_distr(n=20, k=3, distr=c("normal", "poisson"), mean=2,sd=1, lambda=4)
+sim_distr(n=20, k=4, distr=c("normal"), mean=2,sd=1)
+
