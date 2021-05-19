@@ -64,16 +64,19 @@ estimate_mlr <- function(data){
     }
 
     print(new_est_values)
+    # Catch error, na's in estimation
+    tryCatch(if(any(is.na(new_est_values))) stop("na's in estimation"))
 
     for(i in seq_len(nrow(positions))){
       data[positions[i,1], positions[i,2]] <- new_est_values[i]
     }
 
-
     # Exit test
     conv <- old_est_values - new_est_values
     print(conv)
-    ifelse(all((lapply(conv, abs) < 1e-12)==TRUE), break, next)
+    ifelse(all((lapply(conv, abs) < 1e-8)==TRUE), break, next)
+
+
 
   }
 
