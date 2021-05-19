@@ -25,16 +25,16 @@ sim_distr <- function(n, k = 3, distr="normal", ...){
   rlang::arg_match0(distr, c("normal", "exponential", "poisson", "weibull", "chisquare", "gamma", "uniform"))
 
   df <- data.frame(matrix(ncol=k, nrow=n))
-  rdistr <- switch(distr,
-         "normal" = stats::rnorm(n, ...),
-         "exponential" = stats::rexp(n, ...),
-         "poisson" = stats::rpois(n, ...),
-         "weibull" = stats::rweibull(n, ...),
-         "chisquare" = stats::rchisq(n, ...),
-         "gamma" = stats::rgamma(n, ...),
-         "uniform" = stats::runif(n, ...))
 
   for(i in seq_len(k)) {
+    rdistr <- switch(distr,
+                     "normal" = stats::rnorm(n, ...),
+                     "exponential" = stats::rexp(n, ...),
+                     "poisson" = stats::rpois(n, ...),
+                     "weibull" = stats::rweibull(n, ...),
+                     "chisquare" = stats::rchisq(n, ...),
+                     "gamma" = stats::rgamma(n, ...),
+                     "uniform" = stats::runif(n, ...))
     rdistr -> df[i]
   }
   return(df)
