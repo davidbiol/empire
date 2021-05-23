@@ -22,6 +22,14 @@
 
 sim_distr <- function(n, k, distr, ...){
 
+  # Exceptions
+  if (!is.numeric(n) | n%%1 !=0){
+    stop("The number of observations (n) must be an integer number")
+  }
+  if (!is.numeric(k) | k%%1 !=0){
+    stop("The number of variables (k) must be an integer number")
+  }
+
   if (length(distr)==1){
     distr=rep(distr, k)
   }
@@ -56,5 +64,4 @@ sim_distr <- function(n, k, distr, ...){
   return(df)
 
 }
-sim_distr(n=20, k=3, distr="uniform", min=10, max=11)
 
