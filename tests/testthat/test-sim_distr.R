@@ -1,5 +1,5 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("Function returns correct type", {
+  expect_equal(class(sim_distr(n=10, k=5, distr="normal")), "data.frame")
 })
 
 # #Multivariate normality test
@@ -26,43 +26,43 @@ test_that("multiplication works", {
 # mvn(data_mvrnorm, mvnTest = "energy")
 
 #-----------------------------------------
-
-#Distribution tester
-library(empire)
-iterations <- 50
-mrdsk <- mrdku <- roy <- dht <- ene <- vector()
-for (i in seq_len(iterations)){
-  #Simulate data
-  library(MASS)
-  mu <- c(runif(1,0,100), runif(1,0,100),runif(1,0,100), runif(1,0,100)) #Means are random between 0 an 100
-
-  R <- matrix(c(1, 0.5,0.5,0.5,
-                0.5,1,0.5,0.5,
-                0.5,0.5,1,0.5,
-                0.5,0.5,0.5, 1),
-              nrow = 4, ncol = 4) #Suppose homocedasticity
-
-  #Distribution
-  #data_sim <- mvrnorm(100, mu=mu, Sigma=R)
-  data_sim <- sim_distr(n=100, k=4, distr=c("normal","exponential","poisson"))
-  #data_sim <- sim_norm(n=100, k=3, distr="Poisson", lambda = 4)
-  #data_sim <- sim_norm(n=50, k=3, distr="Exponential")
-
-  #Test
-  mrdsk[i] <- mvn(data_sim, mvnTest = "mardia")$multivariateNormality$Result[1]
-  mrdku[i] <- mvn(data_sim, mvnTest = "mardia")$multivariateNormality$Result[2]
-  roy[i] <- mvn(data_sim, mvnTest = "royston")$multivariateNormality$MVN
-  dht[i] <- mvn(data_sim, mvnTest = "dh")$multivariateNormality$MVN
-  ene[i] <- mvn(data_sim, mvnTest = "energy")$multivariateNormality$MVN
-}
-
-#Data frame with results
-
-
-par(mfrow=c(3,2))
-pie(table(mrdsk), main="mrdsk")
-pie(table(mrdku), main="mrdku")
-pie(table(roy), main="roy")
-pie(table(dht), main="dht")
-pie(table(ene), main="ene")
+#
+# #Distribution tester
+# library(empire)
+# iterations <- 50
+# mrdsk <- mrdku <- roy <- dht <- ene <- vector()
+# for (i in seq_len(iterations)){
+#   #Simulate data
+#   library(MASS)
+#   mu <- c(runif(1,0,100), runif(1,0,100),runif(1,0,100), runif(1,0,100)) #Means are random between 0 an 100
+#
+#   R <- matrix(c(1, 0.5,0.5,0.5,
+#                 0.5,1,0.5,0.5,
+#                 0.5,0.5,1,0.5,
+#                 0.5,0.5,0.5, 1),
+#               nrow = 4, ncol = 4) #Suppose homocedasticity
+#
+#   #Distribution
+#   #data_sim <- mvrnorm(100, mu=mu, Sigma=R)
+#   data_sim <- sim_distr(n=100, k=4, distr=c("normal","exponential","poisson"))
+#   #data_sim <- sim_norm(n=100, k=3, distr="Poisson", lambda = 4)
+#   #data_sim <- sim_norm(n=50, k=3, distr="Exponential")
+#
+#   #Test
+#   mrdsk[i] <- mvn(data_sim, mvnTest = "mardia")$multivariateNormality$Result[1]
+#   mrdku[i] <- mvn(data_sim, mvnTest = "mardia")$multivariateNormality$Result[2]
+#   roy[i] <- mvn(data_sim, mvnTest = "royston")$multivariateNormality$MVN
+#   dht[i] <- mvn(data_sim, mvnTest = "dh")$multivariateNormality$MVN
+#   ene[i] <- mvn(data_sim, mvnTest = "energy")$multivariateNormality$MVN
+# }
+#
+# #Data frame with results
+#
+#
+# par(mfrow=c(3,2))
+# pie(table(mrdsk), main="mrdsk")
+# pie(table(mrdku), main="mrdku")
+# pie(table(roy), main="roy")
+# pie(table(dht), main="dht")
+# pie(table(ene), main="ene")
 

@@ -53,7 +53,7 @@ sim_distr <- function(n, k, distr, ...){
 
     rdistr <- switch(distr[i],
                      "normal" = do.call(stats::rnorm, c(list(n), normal_arg)),
-                     "exponential" = do.call(stats::rexpc, c(list(n), exp_arg)),
+                     "exponential" = do.call(stats::rexp, c(list(n), exp_arg)),
                      "poisson" = do.call(stats::rpois, c(list(n), poisson_arg)),
                      "weibull" = do.call(stats::rweibull, c(list(n), weibull_arg)),
                      "chisquare" = do.call(stats::rchisq, c(list(n), chisquare_arg)),
