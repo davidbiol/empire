@@ -7,10 +7,10 @@
 count_miss(data)
 }
 \arguments{
-\item{data}{}
+\item{data}{A matrix or data frame object to be evaluated.}
 }
 \value{
-An integer number of total missing values in data
+An integer number of total missing values in data.
 }
 \description{
 Number of missing values in data

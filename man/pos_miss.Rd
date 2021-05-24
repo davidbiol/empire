@@ -7,10 +7,10 @@
 pos_miss(data)
 }
 \arguments{
-\item{data}{}
+\item{data}{A matrix or data frame object. It should have variables as columns and observations as rows.}
 }
 \value{
-
+A data frame with the row (Row) and column (Col) position of each missing value.
 }
 \description{
 Missing value position inside data set
