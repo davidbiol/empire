@@ -1,12 +1,19 @@
 #' Missing value position inside data set
 #'
-#' @param data
+#' @param data A matrix or data frame object. It should have variables as columns and observations as rows.
 #'
-#' @return
+#' @return A data frame with the row (Row) and column (Col) position of each missing value.
 #' @export
 #'
 #' @examples
 pos_miss <- function(data){
+  # Exceptions
+  if (!is.data.frame(data) & !is.matrix(data) & !is.vector(data)){
+    stop("Data to be evaluated (data) should be a data frame or a matrix")
+  }
+  if (is.vector(data)){
+    stop("Data to be evaluated is a vector and it should be a data frame or a matrix, change the class object to a matrix or data frame. If it's in fact a vector, try 'which(is.na(data))'")
+  }
 
   df = data.frame(Row = vector(), Col = vector())
 
