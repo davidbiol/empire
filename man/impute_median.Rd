@@ -7,10 +7,10 @@
 impute_median(data)
 }
 \arguments{
-\item{data}{}
+\item{data}{A matrix or data frame object. It should have variables as columns and observations as rows.}
 }
 \value{
-
+A list object with positions of missing values (positions), imputed values by observed median (imp_values) and new data with imputed values (new_data).
 }
 \description{
 Simple median imputation of missing values

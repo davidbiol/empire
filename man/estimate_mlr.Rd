@@ -7,10 +7,10 @@
 estimate_mlr(data)
 }
 \arguments{
-\item{data}{}
+\item{data}{A matrix or data frame object. It should have variables as columns and observations as rows.}
 }
 \value{
-
+A list object with positions of missing values (positions), estimated values by multiple linear regression (est_values) and new data with estimated values (new_data).
 }
 \description{
 Estimate missing values using multiple linear regressions

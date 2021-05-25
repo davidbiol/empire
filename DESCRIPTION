@@ -2,10 +2,16 @@ Package: empire
 Type: Package
 Title: Estimation of Missing Data Using Penalized Iterative Regressions
 Version: 0.1.0
-Author: c(person("David", "Gutiérrez-Duque", role = c("aut","cre"),  
-    email = "davidgd2015@gmail.com", comment = c(ORCID = "https://orcid.org/0000-0001-8493-6452"))
-    person("Lorenzo", "Martínez-Hernández", role = c("aut"), 
-    email = "lorenzo.martinez_h@ucaldas.edu.co "))
+Authors@R:
+    c(person(given = "David",
+             family = "Gutiérrez-Duque",
+             role = c("aut", "cre"),
+             email = "davidgd2015@gmail.com",
+             comment = c(ORCID = "0000-0001-8493-6452")),
+      person(given = "Lorenzo",
+             family = "Martínez-Hernández",
+             role = "aut",
+             email = "lorenzo.martinez_h@ucaldas.edu.co "))
 Maintainer: David Gutiérrez Duque <davidgd2015@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
