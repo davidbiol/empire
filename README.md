@@ -8,7 +8,7 @@
 [![R-CMD-check](https://github.com/davidbiol/empire/workflows/R-CMD-check/badge.svg)](https://github.com/davidbiol/empire/actions)
 <!-- badges: end -->
 
-The goal of empire is to …
+The goal of **empire** is to …
 
 ## Installation
 
