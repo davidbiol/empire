@@ -2,7 +2,7 @@
 #'
 #' @param data A matrix or data frame object. It should have variables as columns and observations as rows.
 #'
-#' @return A list object with positions of missing values (positions), estimated values (est_values) and new data with imputed/estimated values (new_data)
+#' @return A list object with positions of missing values (positions), imputed values by observed mean (imp_values) and new data with imputed values (new_data).
 #' @export
 #'
 #' @examples
@@ -13,16 +13,16 @@ impute_mean <- function(data){
   }
   positions <- pos_miss(data)
 
-  est_values = vector()
+  imp_values = vector()
   new_data = data
 
 for(i in seq_len(nrow(positions))){
   new_data[positions[i,1], positions[i,2]] <- mean(data[, positions[i,2]], na.rm=TRUE)
-  est_values[i] <- new_data[positions[i,1], positions[i,2]]
+  imp_values[i] <- new_data[positions[i,1], positions[i,2]]
 }
 
   # List
-  my_list <- list("positions" = positions, "est_values" = est_values, "new_data" = new_data)
+  my_list <- list("positions" = positions, "imp_values" = imp_values, "new_data" = new_data)
 
   return(my_list)
 }
