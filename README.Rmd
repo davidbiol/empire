@@ -28,7 +28,7 @@ You can install the released version of empire from [CRAN](https://CRAN.R-projec
 ``` r
 install.packages("empire")
 ```
-Or you can install empire like so:
+Or you can install the development version of empire:
 
 ```{r, eval=FALSE}
 # install.packages("devtools")

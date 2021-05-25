@@ -19,7 +19,7 @@ You can install the released version of empire from
 install.packages("empire")
 ```
 
-Or you can install empire like so:
+Or you can install the development version of empire:
 
 ``` r
 # install.packages("devtools")
