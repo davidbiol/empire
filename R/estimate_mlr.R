@@ -1,8 +1,8 @@
 #' Estimate missing values using multiple linear regressions
 #'
-#' @param data
+#' @param data A matrix or data frame object. It should have variables as columns and observations as rows.
 #'
-#' @return
+#' @return A list object with positions of missing values (positions), estimated values by multiple linear regression (est_values) and new data with estimated values (new_data).
 #' @export
 #'
 #' @examples
