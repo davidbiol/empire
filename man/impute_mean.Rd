@@ -10,7 +10,7 @@ impute_mean(data)
 \item{data}{A matrix or data frame object. It should have variables as columns and observations as rows.}
 }
 \value{
-A list object with positions of missing values (positions), estimated values (est_values) and new data with imputed/estimated values (new_data)
+A list object with positions of missing values (positions), imputed values by observed mean (imp_values) and new data with imputed values (new_data).
 }
 \description{
 Simple mean imputation of missing values
