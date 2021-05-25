@@ -3,7 +3,7 @@
 #'
 #' @param n Number of observations.
 #' @param k Number of variables.
-#' @param distr The distribution to be used. This must be one of "normal", "exponential", "poisson", "weibull", "chisquare", "gamma" or "uniform".
+#' @param distr A vector of distributions to be used in each variable. It could be "normal", "exponential", "poisson", "weibull", "chisquare", "gamma" or "uniform". In case to use the same distribution for all variables, set it as distr = "distr".
 #' @param ... Arguments specific to each distribution. See \code{\link[stats:rnorm]{rnorm}}, \code{\link[stats:rexp]{rexp}}, \code{\link[stats:rpois]{rpois}}, \code{\link[stats:rweibull]{rweibull}}, \code{\link[stats:rchisq]{rchisq}}, \code{\link[stats:rgamma]{rgamma}}, \code{\link[stats:runif]{runif}} to know these arguments.
 #'
 #' @return
