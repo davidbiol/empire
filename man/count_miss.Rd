@@ -15,6 +15,3 @@ An integer number of total missing values in data.
 \description{
 Number of missing values in data
 }
-\examples{
-
-}

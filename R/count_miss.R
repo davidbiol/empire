@@ -6,7 +6,6 @@
 #' @export
 #'
 #' @examples
-#'
 
 count_miss <- function(data){
   # Exceptions

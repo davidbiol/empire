@@ -11,7 +11,6 @@
 #' @export
 #'
 #' @examples
-#'
 #' @seealso \code{\link[stats:rnorm]{rnorm}},
 #' \code{\link[stats:rexp]{rexp}},
 #' \code{\link[stats:rpois]{rpois}},
