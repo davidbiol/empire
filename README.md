@@ -8,18 +8,18 @@
 [![R-CMD-check](https://github.com/davidbiol/empire/workflows/R-CMD-check/badge.svg)](https://github.com/davidbiol/empire/actions)
 <!-- badges: end -->
 
-The goal of empire is to …
+The goal of **empire** is to …
 
 ## Installation
 
-You can install the released version of empire from
+You can install the released version of **empire** from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("empire")
 ```
 
-Or you can install the development version of empire:
+Or you can install the development version of **empire** with:
 
 ``` r
 # install.packages("devtools")
