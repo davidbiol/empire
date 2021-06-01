@@ -14,10 +14,10 @@ estimate_mlr <- function(data){
     complete_data <- data[stats::complete.cases(data),]
     Y = as.matrix(complete_data[positions[v,2]])
     if (length(data[positions[v,1],][is.na(data[positions[v,1],])])!=1){
-      X = as.matrix(cbind(c(rep(1, nrow(Y))), c.t[-c(positions[v,2], c(which(is.na(data[positions[v,1],]))))]))
+      X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-c(positions[v,2], c(which(is.na(data[positions[v,1],]))))]))
     }
     else {
-      X = as.matrix(cbind(c(rep(1, nrow(Y))), c.t[-(positions[v,2])]))
+      X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-(positions[v,2])]))
     }
     XtX <- t(X)%*%X
     XtX.1 <- solve(XtX)

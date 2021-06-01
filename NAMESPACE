@@ -2,6 +2,7 @@
 
 export(count_miss)
 export(estimate_mlr)
+export(estimate_ridge)
 export(impute_mean)
 export(impute_median)
 export(pos_miss)
