@@ -84,7 +84,7 @@ estimate_ridge <- function(data){
     # Exit test
     conv <- old_est_values - new_est_values
     print(conv)
-    ifelse(all((lapply(conv, abs) < 1e-8)==TRUE), break, next)
+    ifelse(all((lapply(conv, abs) < 1e-5)==TRUE), break, next)
 
 
 
