@@ -63,7 +63,7 @@ sim_distr <- function(n, k, distr, ...){
                        "weibull" = do.call(stats::rweibull, c(list(n), weibull_arg)),
                        "chisquare" = do.call(stats::rchisq, c(list(n), chisquare_arg)),
                        "uniform" = do.call(stats::runif, c(list(n), unif_arg))))
-      if(is(rdistr, "try-error")) stop("Check you have entered all distribution arguments, see ?sim_distr Arguments for help")
+      if(methods::is(rdistr, "try-error")) stop("Check you have entered all distribution arguments, see ?sim_distr Arguments for help")
 
     }
     #Save distribution in data frame
