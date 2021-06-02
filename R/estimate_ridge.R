@@ -13,11 +13,16 @@ estimate_ridge <- function(data){
   ridge.reg <- function(v){
     complete_data <- data[stats::complete.cases(data),]
     Y = as.matrix(complete_data[positions[v,2]])
-    X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-(positions[v,2])]))
+    if (length(data[positions[v,1],][is.na(data[positions[v,1],])])!=1){
+      X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-c(positions[v,2], c(which(is.na(data[positions[v,1],]))))]))
+    }
+    else {
+      X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-(positions[v,2])]))
+    }
     XtX <- t(X)%*%X
 
     #Ridge penalization
-    cv.out=cv.glmnet(X,Y,alpha=0)
+    cv.out=glmnet::cv.glmnet(X,Y,alpha=0)
     bestlam=cv.out$lambda.min
     XtX.1 <- solve(XtX)
     B <- solve(XtX + bestlam*diag(1,nrow(XtX)))%*%t(X)%*%Y #Calculate coefficients with Ridge Lambda penalization
@@ -29,12 +34,13 @@ estimate_ridge <- function(data){
 
     e1 <- B[1] # Value obtained with the regression
     b=2
-    for (j in seq_len(ncol(data))){ # Omit the value in the target column, replacing in all columns except where the missing value lies
-      if (j != positions[v,2]){
+    for (j in seq_len(ncol(data))){ # Omit the value of the target column, replacing in all columns except where the missing value lies
+      if (all(j != c(positions[v,2],c(which(is.na(data[positions[v,1],])))))){ # Check all False
         e1 = e1 + regresion(b,j)
         b=b+1
       }
     }
+
 
     # Return e1
     return(e1)
@@ -46,9 +52,9 @@ estimate_ridge <- function(data){
     # old estimated values
     old_est_values = vector()
     g = 1
-    # Run estimate.mv() in each missing value
+    # Run ridge.reg in each missing value
     for (mv in seq_len(nrow(positions))){
-      old_est_values[g] <- estimate.mv(mv)
+      old_est_values[g] <- ridge.reg(mv)
       g=g+1
     }
     print(old_est_values)
@@ -63,7 +69,7 @@ estimate_ridge <- function(data){
     g=1
 
     for (mv in seq_len(nrow(positions))){
-      new_est_values[g] <- estimate.mv(mv)
+      new_est_values[g] <- ridge.reg(mv)
       g=g+1
     }
 
