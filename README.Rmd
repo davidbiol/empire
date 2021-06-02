@@ -31,8 +31,8 @@ install.packages("empire")
 Or you can install the development version of empire:
 
 ```{r, eval=FALSE}
-# install.packages("devtools")
-devtools::install_github("davidbiol/empire")
+# install.packages("remotes")
+remotes::install_github("davidbiol/empire")
 ```
 
 ## Example
