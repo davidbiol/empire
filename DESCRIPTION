@@ -12,7 +12,7 @@ Authors@R:
              family = "Martínez-Hernández",
              role = "aut",
              email = "lorenzo.martinez_h@ucaldas.edu.co ",
-             comment = c( ORCID: "0000-0001-5097-694X"))
+             comment = c( ORCID = "0000-0001-5097-694X")))
 Maintainer: David Gutiérrez-Duque <davidgd2015@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
