@@ -10,6 +10,38 @@ estimate_ridge <- function(data){
 
   positions <- pos_miss(data)
 
+  estimate.mv <- function(v){
+    complete_data <- data[stats::complete.cases(data),]
+    Y = as.matrix(complete_data[positions[v,2]])
+    if (length(data[positions[v,1],][is.na(data[positions[v,1],])])!=1){
+      X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-c(positions[v,2], c(which(is.na(data[positions[v,1],]))))]))
+    }
+    else {
+      X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-(positions[v,2])]))
+    }
+    XtX <- t(X)%*%X
+    XtX.1 <- solve(XtX)
+    B <- XtX.1%*%t(X)%*%Y # Calculate coefficients
+
+    regresion <- function(b1,b2){   # Regression function
+      B[b1]*data[positions[v,1],b2]
+    }
+
+
+    e1 <- B[1] # Value obtained with the regression
+    b=2
+    for (j in seq_len(ncol(data))){ # Omit the value of the target column, replacing in all columns except where the missing value lies
+      if (all(j != c(positions[v,2],c(which(is.na(data[positions[v,1],])))))){ # Check all False
+        e1 = e1 + regresion(b,j)
+        b=b+1
+      }
+    }
+
+    # Return e1
+    return(e1)
+
+  }
+
   ridge.reg <- function(v){
     complete_data <- data[stats::complete.cases(data),]
     Y = as.matrix(complete_data[positions[v,2]])
@@ -54,7 +86,7 @@ estimate_ridge <- function(data){
     g = 1
     # Run ridge.reg in each missing value
     for (mv in seq_len(nrow(positions))){
-      old_est_values[g] <- ridge.reg(mv)
+      old_est_values[g] <- estimate.mv(mv)
       g=g+1
     }
     print(old_est_values)
@@ -69,7 +101,7 @@ estimate_ridge <- function(data){
     g=1
 
     for (mv in seq_len(nrow(positions))){
-      new_est_values[g] <- ridge.reg(mv)
+      new_est_values[g] <- estimate.mv(mv)
       g=g+1
     }
 
@@ -89,8 +121,20 @@ estimate_ridge <- function(data){
 
 
   }
+  #Apply Ridge
+  ridge_est_values <- vector()
+  g=1
+  for (mv in seq_len(nrow(positions))){
+    ridge_est_values[g] <- ridge.reg(mv)
+    g=g+1
+  }
+  print("With Ridge Regularization")
 
+  for(i in seq_len(nrow(positions))){
+    data[positions[i,1], positions[i,2]] <- ridge_est_values[i]
+  }
+  print(ridge_est_values)
   # List
-  my_list <- list("positions" = positions, "est_values" = new_est_values, "new_data" = data)
+  my_list <- list("positions" = positions, "est_values" = ridge_est_values, "new_data" = data)
 
 }
