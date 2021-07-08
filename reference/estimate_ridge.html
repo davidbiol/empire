@@ -117,7 +117,7 @@
     <p>Estimate missing values using Ridge regression</p>
     </div>
 
-    <pre class="usage"><span class='fu'>estimate_ridge</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>estimate_ridge</span><span class='op'>(</span><span class='va'>data</span>, diff <span class='op'>=</span> <span class='fl'>1e-05</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,6 +125,10 @@
     <tr>
       <th>data</th>
       <td><p>A matrix or data frame object. It should have variables as columns and observations as rows.</p></td>
+    </tr>
+    <tr>
+      <th>diff</th>
+      <td><p>A number. It is the minimum difference between the estimated value and the value of the immediately before iteration. It works as an exit test for the iterations, smaller its value, the estimation will be more acurate, however it will take a longer time to be estimated. <code>diff</code> is by default 1 e-05.</p></td>
     </tr>
     </table>
 
