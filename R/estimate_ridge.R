@@ -8,11 +8,10 @@
 #' @examples
 estimate_ridge <- function(data){
 
-  positions <- empire::pos_miss(data)
-
   #Apply Simple Multiple Linear Regression
   mlr_est = empire::estimate_mlr(data)
   data = mlr_est$new_data
+  positions = mlr_est$positions
 
   ridge.reg <- function(v){
     complete_data <- data[stats::complete.cases(data),]
