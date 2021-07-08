@@ -6,10 +6,10 @@
 #' @export
 #'
 #' @examples
-estimate_ridge <- function(data){
+estimate_ridge <- function(data, diff = 1e-5){
 
   #Apply Simple Multiple Linear Regression
-  mlr_est = empire::estimate_mlr(data)
+  mlr_est = empire::estimate_mlr(data, diff=diff)
   data = mlr_est$new_data
   positions = mlr_est$positions
 

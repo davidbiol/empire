@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-estimate_mlr <- function(data){
+estimate_mlr <- function(data, diff = 1e-5){
 
   positions <- pos_miss(data)
 
@@ -79,7 +79,7 @@ estimate_mlr <- function(data){
     # Exit test
     conv <- old_est_values - new_est_values
     print(conv)
-    ifelse(all((lapply(conv, abs) < 1e-8)==TRUE), break, next)
+    ifelse(all((lapply(conv, abs) < diff)==TRUE), break, next)
 
 
 
