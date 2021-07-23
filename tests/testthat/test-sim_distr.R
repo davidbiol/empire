@@ -13,7 +13,7 @@ test_that("Function returns correct number of observations", {
 ## Mean and SD accuracy
 mean_x1 <- sd_x1 <- vector()
 #Take a random integer as population mean and sd
-mean_p <- sample(1:1000,1)
+mean_p <- sample(50:1000,1)
 sd_p <- sample(1:100, 1)
 for (i in seq_len(1000)){
 
