@@ -1,7 +1,7 @@
 ## Testing on structure
 test_that("Function returns correct type", {
   expect_equal(class(sim_distr(n=10, k=5, distr="normal")), "data.frame")
-  expect_equal(class(sim_distr(n=10, k=4, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1,sd=3, min=1, max=4)), "data.frame")
+  expect_equal(class(sim_distr(n=10, k=4, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1, min=1, max=4)), "data.frame")
 })
 
 test_that("Function returns correct number of observations", {
@@ -26,6 +26,26 @@ for (i in seq_len(1000)){
 test_that("Mean and Standard deviation are accurately calculated", {
   expect_equal(round(mean(mean_x1)), mean_p)
   expect_equal(round(mean(sd_x1)), sd_p)
+})
+
+## Error testing
+test_that("Error for number of observations not an integer", {
+  expect_error(sim_distr(n="hello", k=5, distr="normal"))
+  expect_error(sim_distr(n=TRUE, k=4, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1, min=1, max=4))
+  expect_error(sim_distr(n=1.4, k=2, distr=c("poisson", "normal"), lambda=4, mean=40, sd=3))
+  expect_error(sim_distr(n=3i, k=4, distr=c("weibull", "uniform"), scale=2, shape=1, min=1, max=4))
+})
+
+test_that("Error for number of variables not an integer", {
+  expect_error(sim_distr(n=1000, k="hello", distr="normal"))
+  expect_error(sim_distr(n=80, k=TRUE, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1, min=1, max=4))
+  expect_error(sim_distr(n=40, k=1.4, distr=c("poisson", "normal"), lambda=4, mean=40, sd=3))
+  expect_error(sim_distr(n=10, k=3i, distr=c("weibull", "uniform"), scale=2, shape=1, min=1, max=4))
+})
+
+test_that("Error for missing distribution arguments", {
+  expect_error(sim_distr(n=50, k=3, distr=c("normal", "exponential", "weibull")))
+  expect_error(sim_distr(n=50, k=3, distr=c("chisquare", "uniform", "poisson")))
 })
 
 # #Multivariate normality test
