@@ -4,6 +4,12 @@ test_that("Function returns correct type", {
   expect_equal(class(sim_distr(n=10, k=4, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1,sd=3, min=1, max=4)), "data.frame")
 })
 
+test_that("Function returns correct number of observations", {
+  n <- sample(1:1000, 1)
+  expect_equal(nrow(sim_distr(n=n, k=5, distr="normal")), n)
+  expect_equal(nrow(sim_distr(n=n, k=3, distr=c("normal", "exponential", "weibull"), mean=1, sd=0.2, rate=0.5, scale=2, shape=3)), n)
+})
+
 ## Mean and SD accuracy
 mean_x1 <- sd_x1 <- vector()
 #Take a random integer as population mean and sd
