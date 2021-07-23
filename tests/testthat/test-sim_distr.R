@@ -1,6 +1,7 @@
 ## Testing on structure
 test_that("Function returns correct type", {
   expect_equal(class(sim_distr(n=10, k=5, distr="normal")), "data.frame")
+  expect_equal(class(sim_distr(n=10, k=4, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1,sd=3, min=1, max=4)), "data.frame")
 })
 
 ## Mean and SD accuracy
