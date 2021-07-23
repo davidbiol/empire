@@ -1,7 +1,7 @@
 #' Estimate missing values using multiple linear regressions
 #'
 #' @param data A matrix or data frame object. It should have variables as columns and observations as rows.
-#' @param diff A number. It is the minimum difference between the estimated value and the value of the immediately before iteration. It works as an exit test for the iterations, smaller its value, the estimation will be more acurate, however it will take a longer time to be estimated. \code{diff} is by default 1 e-05.
+#' @param diff A number. It is the minimum difference between the estimated value and the value of the immediately before iteration. It works as an exit test for the iterations, smaller its value, the estimation will be more accurate, however it will take a longer time to be estimated. \code{diff} is by default 1 e-05.
 #' @return A list object with positions of missing values (positions), estimated values by multiple linear regression (est_values) and new data with estimated values (new_data).
 #' @export
 #'

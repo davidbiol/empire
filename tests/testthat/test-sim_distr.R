@@ -1,5 +1,22 @@
+## Testing on structure
 test_that("Function returns correct type", {
   expect_equal(class(sim_distr(n=10, k=5, distr="normal")), "data.frame")
+})
+
+## Mean and SD accuracy
+sd_x1 <- vector()
+mean_x1 <- vector()
+for (i in seq_len(1000)){
+
+  X <- sim_distr(n=10, k=3, distr=c("exponential", "normal", "weibull"), scale=2, shape=1,sd=3, mean=10)
+
+  mean_x1[i] <- mean(X[,2])
+  sd_x1[i] <- sd(X[,2])
+}
+
+test_that("Mean and Standard deviation are accurately calculated", {
+  expect_equal(round(mean(mean_x1)), 10)
+  expect_equal(round(mean(sd_x1)), 2)
 })
 
 # #Multivariate normality test
