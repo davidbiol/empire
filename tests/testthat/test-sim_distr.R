@@ -4,19 +4,21 @@ test_that("Function returns correct type", {
 })
 
 ## Mean and SD accuracy
-sd_x1 <- vector()
-mean_x1 <- vector()
+mean_x1 <- sd_x1 <- vector()
+#Take a random integer as population mean and sd
+mean_p <- sample(1:1000,1)
+sd_p <- sample(1:100, 1)
 for (i in seq_len(1000)){
 
-  X <- sim_distr(n=10, k=3, distr=c("exponential", "normal", "weibull"), scale=2, shape=1,sd=3, mean=10)
+  X <- sim_distr(n=100, k=3, distr=c("exponential", "normal", "weibull"), scale=2, shape=1,sd=sd_p, mean=mean_p)
 
   mean_x1[i] <- mean(X[,2])
   sd_x1[i] <- sd(X[,2])
 }
 
 test_that("Mean and Standard deviation are accurately calculated", {
-  expect_equal(round(mean(mean_x1)), 10)
-  expect_equal(round(mean(sd_x1)), 2)
+  expect_equal(round(mean(mean_x1)), mean_p)
+  expect_equal(round(mean(sd_x1)), sd_p)
 })
 
 # #Multivariate normality test
