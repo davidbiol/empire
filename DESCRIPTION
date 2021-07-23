@@ -22,6 +22,7 @@ LazyData: true
 URL: https://github.com/davidbiol/empire
 BugReports: https://github.com/davidbiol/empire/issues
 Suggests: 
+    covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 RoxygenNote: 7.1.1

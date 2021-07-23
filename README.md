@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/davidbiol/empire/workflows/R-CMD-check/badge.svg)](https://github.com/davidbiol/empire/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/davidbiol/empire/branch/master/graph/badge.svg)](https://codecov.io/gh/davidbiol/empire?branch=master)
 <!-- badges: end -->
 
 The goal of empire is to …
