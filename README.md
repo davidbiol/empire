@@ -24,7 +24,7 @@ install.packages("empire")
 Or you can install the development version of empire:
 
 ``` r
-# install.packages("remotes")
+# install.packages("remotes") # in case you don't have installed it
 remotes::install_github("davidbiol/empire")
 ```
 
