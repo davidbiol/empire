@@ -31,6 +31,6 @@ We have not a released version yet, however, you can install the
 development version of ‘empire’:
 
 ``` r
-# install.packages("remotes")
+# install.packages("remotes") # in case you don't have installed it
 remotes::install_github("davidbiol/empire")
 ```
