@@ -67,44 +67,21 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="empire" class="section level1">
+<div id="empire-estimation-of-missing-data-using-penalized-iterative-regressions" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#empire" class="anchor"></a>empire</h1></div>
+<a href="#empire-estimation-of-missing-data-using-penalized-iterative-regressions" class="anchor"></a>empire: Estimation of Missing Data using Penalized Iterative Regressions</h1></div>
 <!-- badges: start -->
 
-<p>The goal of empire is to …</p>
+<p>‘empire’ is an R package that provides a set of functions to handle missing values, since intransitive imputation (‘impute_mean’, ‘impute_median’), to transitive imputation (‘estimate_mlr’) applying Ridge penalization (‘estimate_ridge’).</p>
+<p>There are also some descriptive functions for a better understanding of your data set. For example, ‘count_miss’ gives you the number of missing values in your data. ‘pos_miss’ gives you the position of the missing values inside your data set.</p>
+<p>At last, but not least important, there are some useful functions to simulate data that can be used to look for the effects of missing values in a data set. For example, ‘sim_distr’ is an amazing function that can simulate data variables with the distribution you want.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of empire from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<p>We have not a released version yet, however, you can install the development version of ‘empire’:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"empire"</span><span class="op">)</span></code></pre></div>
-<p>Or you can install the development version of empire:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes") # in case you don't have installed it</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"davidbiol/empire"</span><span class="op">)</span></code></pre></div>
-</div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/davidbiol/empire">empire</a></span><span class="op">)</span>
-<span class="co">## basic example code</span></code></pre></div>
-<p>What is special about using <code>README.Rmd</code> instead of just <code>README.md</code>? You can include R chunks like so:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">cars</span><span class="op">)</span>
-<span class="co">#&gt;      speed           dist       </span>
-<span class="co">#&gt;  Min.   : 4.0   Min.   :  2.00  </span>
-<span class="co">#&gt;  1st Qu.:12.0   1st Qu.: 26.00  </span>
-<span class="co">#&gt;  Median :15.0   Median : 36.00  </span>
-<span class="co">#&gt;  Mean   :15.4   Mean   : 42.98  </span>
-<span class="co">#&gt;  3rd Qu.:19.0   3rd Qu.: 56.00  </span>
-<span class="co">#&gt;  Max.   :25.0   Max.   :120.00</span></code></pre></div>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code>devtools::build_readme()</code> is handy for this. You could also use GitHub Actions to re-render <code>README.Rmd</code> every time you push. An example workflow can be found here: <a href="https://github.com/r-lib/actions/tree/master/examples" class="uri">https://github.com/r-lib/actions/tree/master/examples</a>.</p>
-<p>You can also embed plots, for example:</p>
-<p><img src="reference/figures/README-pressure-1.png" width="100%"></p>
-<p>In that case, don’t forget to commit and push the resulting figure files, so they display on GitHub and CRAN.</p>
 </div>
 </div>
   </div>
