@@ -11,7 +11,7 @@ coverage](https://codecov.io/gh/davidbiol/empire/branch/master/graph/badge.svg)]
 <!-- badges: end -->
 
 empire is an R package that provides a set of functions to handle
-missing values, since intransitive imputation `impute_mean`,
+missing values, since intransitive imputation (`impute_mean`,
 `impute_median`), to transitive imputation (`estimate_mlr`) applying
 Ridge penalization (`estimate_ridge`).
 
