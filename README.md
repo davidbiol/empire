@@ -10,27 +10,27 @@
 coverage](https://codecov.io/gh/davidbiol/empire/branch/master/graph/badge.svg)](https://codecov.io/gh/davidbiol/empire?branch=master)
 <!-- badges: end -->
 
-‘empire’ is an R package that provides a set of functions to handle
-missing values, since intransitive imputation (‘impute\_mean’,
-‘impute\_median’), to transitive imputation (‘estimate\_mlr’) applying
-Ridge penalization (‘estimate\_ridge’).
+empire is an R package that provides a set of functions to handle
+missing values, since intransitive imputation `impute_mean`,
+`impute_median`), to transitive imputation (`estimate_mlr`) applying
+Ridge penalization (`estimate_ridge`).
 
 There are also some descriptive functions for a better understanding of
-your data set. For example, ‘count\_miss’ gives you the number of
-missing values in your data. ‘pos\_miss’ gives you the position of the
-missing values inside your data set.
+your data set. For example, `count_miss` gives you the number of missing
+values in your data. `pos_miss` gives you the position of the missing
+values inside your data set.
 
 At last, but not least important, there are some useful functions to
 simulate data that can be used to look for the effects of missing values
-in a data set. For example, ‘sim\_distr’ is an amazing function that can
+in a data set. For example, `sim_distr` is an amazing function that can
 simulate data variables with the distribution you want.
 
 ## Installation
 
 We have not a released version yet, however, you can install the
-development version of ‘empire’:
+development version of empire:
 
 ``` r
-# install.packages("remotes") # in case you don't have installed it
+# install.packages("remotes")
 remotes::install_github("davidbiol/empire")
 ```
