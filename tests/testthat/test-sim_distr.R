@@ -24,8 +24,8 @@ for (i in seq_len(1000)){
 }
 
 test_that("Mean and Standard deviation are accurately calculated", {
-  expect_equal(round(mean(mean_x1)), mean_p)
-  expect_equal(round(mean(sd_x1)), sd_p)
+  expect_equal(mean(mean_x1), mean_p, tolerance = 1)
+  expect_equal(mean(sd_x1), sd_p, tolerance = 1)
 })
 
 ## Error testing
