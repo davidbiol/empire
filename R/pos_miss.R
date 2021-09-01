@@ -8,11 +8,9 @@
 #' @examples
 pos_miss <- function(data){
   # Exceptions
-  if (!is.data.frame(data) & !is.matrix(data) & !is.vector(data)){
-    stop("Data to be evaluated (data) should be a data frame or a matrix")
-  }
-  if (is.vector(data)){
-    stop("Data to be evaluated is a vector and it should be a data frame or a matrix, change the class object to a matrix or data frame. If it's in fact a vector, try 'which(is.na(data))'")
+
+  if (!is.data.frame(data) & !is.matrix(data)){
+    stop("Data to be evaluated (data) should be a data frame or a matrix. If it's in fact a vector, try 'which(is.na(data))")
   }
 
   if(!all(unlist(lapply(data, is.numeric)), TRUE)){
