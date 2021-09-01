@@ -21,3 +21,12 @@ df_matrix <- matrix(c(x1,x2,x3,x4), ncol=4)
 test_that("The function works if the input is a matrix", {
   expect_equal(class(df_matrix), c("matrix", "array"))
 })
+
+test_that("The function works if the observations are numbers", {
+  df_is_numeric <- all(unlist(lapply(df, is.numeric)), TRUE)
+  expect_equal(df_is_numeric, TRUE)
+
+  df_matrix_is_numeric <- all(unlist(lapply(df_matrix, is.numeric)), TRUE)
+  expect_equal(df_matrix_is_numeric, TRUE)
+})
+
