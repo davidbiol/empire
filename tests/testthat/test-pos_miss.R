@@ -24,10 +24,10 @@ test_that("The function works if the input is a matrix", {
 
 test_that("The function works if the observations are numbers", {
   df_is_numeric <- all(unlist(lapply(df, is.numeric)), TRUE)
-  expect_equal(df_is_numeric, TRUE)
+  expect_true(df_is_numeric)
 
   df_matrix_is_numeric <- all(unlist(lapply(df_matrix, is.numeric)), TRUE)
-  expect_equal(df_matrix_is_numeric, TRUE)
+  expect_true(df_matrix_is_numeric)
 })
 
 
