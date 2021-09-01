@@ -1,13 +1,13 @@
 ## Testing on structure
 test_that("Function returns correct type", {
-  expect_equal(class(sim_distr(n=10, k=5, distr="normal")), "data.frame")
-  expect_equal(class(sim_distr(n=10, k=4, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1, min=1, max=4)), "data.frame")
+  expect_equal(class(empire::sim_distr(n=10, k=5, distr="normal")), "data.frame")
+  expect_equal(class(empire::sim_distr(n=10, k=4, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1, min=1, max=4)), "data.frame")
 })
 
 test_that("Function returns correct number of observations", {
   n <- sample(1:1000, 1)
-  expect_equal(nrow(sim_distr(n=n, k=5, distr="normal")), n)
-  expect_equal(nrow(sim_distr(n=n, k=3, distr=c("normal", "exponential", "weibull"), mean=1, sd=0.2, rate=0.5, scale=2, shape=3)), n)
+  expect_equal(nrow(empire::sim_distr(n=n, k=5, distr="normal")), n)
+  expect_equal(nrow(empire::sim_distr(n=n, k=3, distr=c("normal", "exponential", "weibull"), mean=1, sd=0.2, rate=0.5, scale=2, shape=3)), n)
 })
 
 ## Mean and SD accuracy
@@ -17,7 +17,7 @@ mean_p <- sample(50:1000,1)
 sd_p <- sample(1:100, 1)
 for (i in seq_len(1000)){
 
-  X <- sim_distr(n=100, k=3, distr=c("exponential", "normal", "weibull"), scale=2, shape=1,sd=sd_p, mean=mean_p)
+  X <- empire::sim_distr(n=100, k=3, distr=c("exponential", "normal", "weibull"), scale=2, shape=1,sd=sd_p, mean=mean_p)
 
   mean_x1[i] <- mean(X[,2])
   sd_x1[i] <- sd(X[,2])
@@ -30,22 +30,22 @@ test_that("Mean and Standard deviation are accurately calculated", {
 
 ## Error testing
 test_that("Error for number of observations not an integer", {
-  expect_error(sim_distr(n="hello", k=5, distr="normal"))
-  expect_error(sim_distr(n=TRUE, k=4, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1, min=2, max=4))
-  expect_error(sim_distr(n=1.4, k=2, distr=c("poisson", "normal"), lambda=4, mean=40, sd=3))
-  expect_error(sim_distr(n=3i, k=4, distr=c("weibull", "uniform"), scale=2, shape=1, min=1, max=4))
+  expect_error(empire::sim_distr(n="hello", k=5, distr="normal"))
+  expect_error(empire::sim_distr(n=TRUE, k=4, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1, min=2, max=4))
+  expect_error(empire::sim_distr(n=1.4, k=2, distr=c("poisson", "normal"), lambda=4, mean=40, sd=3))
+  expect_error(empire::sim_distr(n=3i, k=4, distr=c("weibull", "uniform"), scale=2, shape=1, min=1, max=4))
 })
 
 test_that("Error for number of variables not an integer", {
-  expect_error(sim_distr(n=1000, k="hello", distr="normal"))
-  expect_error(sim_distr(n=80, k=TRUE, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1, min=1, max=4))
-  expect_error(sim_distr(n=40, k=1.4, distr=c("poisson", "normal"), lambda=4, mean=40, sd=3))
-  expect_error(sim_distr(n=10, k=3i, distr=c("weibull", "uniform"), scale=2, shape=1, min=1, max=4))
+  expect_error(empire::sim_distr(n=1000, k="hello", distr="normal"))
+  expect_error(empire::sim_distr(n=80, k=TRUE, distr=c("poisson", "chisquare", "weibull", "uniform"), lambda=4, df=3, ncp=1, scale=2, shape=1, min=1, max=4))
+  expect_error(empire::sim_distr(n=40, k=1.4, distr=c("poisson", "normal"), lambda=4, mean=40, sd=3))
+  expect_error(empire::sim_distr(n=10, k=3i, distr=c("weibull", "uniform"), scale=2, shape=1, min=1, max=4))
 })
 
 test_that("Error for missing distribution arguments", {
-  expect_error(sim_distr(n=50, k=3, distr=c("normal", "exponential", "weibull")))
-  expect_error(sim_distr(n=50, k=3, distr=c("chisquare", "uniform", "poisson")))
+  expect_error(empire::sim_distr(n=50, k=3, distr=c("normal", "exponential", "weibull")))
+  expect_error(empire::sim_distr(n=50, k=3, distr=c("chisquare", "uniform", "poisson")))
 })
 
 # #Multivariate normality test
