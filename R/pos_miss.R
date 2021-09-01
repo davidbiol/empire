@@ -15,6 +15,11 @@ pos_miss <- function(data){
     stop("Data to be evaluated is a vector and it should be a data frame or a matrix, change the class object to a matrix or data frame. If it's in fact a vector, try 'which(is.na(data))'")
   }
 
+  if(!all(unlist(lapply(data, is.numeric)), TRUE)){
+    stop("Data to be evaluated has a non-numeric element. Chack as.numeric() to convert your data to a numeric class")
+  }
+
+
   df = data.frame(Row = vector(), Col = vector())
 
   mv <- which(is.na(data))

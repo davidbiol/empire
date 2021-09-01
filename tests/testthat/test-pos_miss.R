@@ -16,7 +16,7 @@ test_that("The function works if the input is a data frame", {
   expect_equal(class(df), "data.frame")
 })
 
-df_matrix <- matrix(c(x1,x2,x3,x4), ncol=4)
+df_matrix <- matrix(c(x1,x2,x3,x4), ncol = 4)
 
 test_that("The function works if the input is a matrix", {
   expect_equal(class(df_matrix), c("matrix", "array"))
@@ -28,5 +28,16 @@ test_that("The function works if the observations are numbers", {
 
   df_matrix_is_numeric <- all(unlist(lapply(df_matrix, is.numeric)), TRUE)
   expect_equal(df_matrix_is_numeric, TRUE)
+})
+
+
+## Error testing
+x5 <- c(117, NA, 118, 128, 145, 161, 170, 155, "hello", 140)
+df_with_character <- data.frame(x1,x2,x3,x4,x5)
+df_matrix_with_character <- matrix(c(x1,x2,x3,x4,x5), ncol = 5)
+
+test_that("Error if data input is a vector of characters", {
+  expect_error(empire::pos_miss(df_with_character))
+  expect_error(empire::pos_miss(df_matrix_with_character))
 })
 
