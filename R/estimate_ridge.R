@@ -26,7 +26,7 @@ estimate_ridge <- function(data, diff = 1e-5, ridge_alpha = 0){
     XtX <- t(X)%*%X
 
     #Ridge penalization
-    cv.out=glmnet::cv.glmnet(X,Y,alpha=alpha)
+    cv.out=glmnet::cv.glmnet(X,Y,alpha=ridge_alpha)
     bestlam=cv.out$lambda.min
     XtX.1 <- solve(XtX)
     B <- solve(XtX + bestlam*diag(1,nrow(XtX)))%*%t(X)%*%Y #Calculate coefficients with Ridge Lambda penalization
@@ -35,28 +35,25 @@ estimate_ridge <- function(data, diff = 1e-5, ridge_alpha = 0){
       B[b1]*data[positions[v,1],b2]
     }
 
-
-    e1 <- B[1] # Value obtained with the regression
+    estimated_value = B[1]
     b=2
     for (j in seq_len(ncol(data))){ # Omit the value of the target column, replacing in all columns except where the missing value lies
       if (all(j != c(positions[v,2],c(which(is.na(data[positions[v,1],])))))){ # Check all False
-        e1 = e1 + regresion(b,j)
+        estimated_value = estimated_value + regresion(b,j)
         b=b+1
       }
     }
 
 
-    # Return e1
-    return(e1)
+    # Return estimated value
+    return(estimated_value)
 
   }
 
   #Apply Ridge
   ridge_est_values <- vector()
-  g=1
   for (mv in seq_len(nrow(positions))){
-    ridge_est_values[g] <- ridge.reg(mv)
-    g=g+1
+    ridge_est_values[mv] <- ridge.reg(mv)
   }
   print("With Ridge Regularization")
 
