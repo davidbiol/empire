@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-estimate_ridge <- function(data, diff = 1e-5){
+estimate_ridge <- function(data, diff = 1e-5, ridge_alpha = 0){
 
   #Apply Simple Multiple Linear Regression
   mlr_est = empire::estimate_mlr(data, diff=diff)
@@ -26,7 +26,7 @@ estimate_ridge <- function(data, diff = 1e-5){
     XtX <- t(X)%*%X
 
     #Ridge penalization
-    cv.out=glmnet::cv.glmnet(X,Y,alpha=0)
+    cv.out=glmnet::cv.glmnet(X,Y,alpha=alpha)
     bestlam=cv.out$lambda.min
     XtX.1 <- solve(XtX)
     B <- solve(XtX + bestlam*diag(1,nrow(XtX)))%*%t(X)%*%Y #Calculate coefficients with Ridge Lambda penalization
