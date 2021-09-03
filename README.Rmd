@@ -34,3 +34,7 @@ We have not a released version yet, however, you can install the development ver
 # install.packages("remotes")
 remotes::install_github("davidbiol/empire")
 ```
+
+## Acknowledgement
+
+*Logo design:* Maria Camila Vergara Rodríguez. Thank you for such an amazing logo, we appreciate your work.
