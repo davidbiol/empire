@@ -38,6 +38,5 @@ remotes::install_github("davidbiol/empire")
 
 ## Acknowledgement
 
-*Logo design:* [Maria Camila Vergara
-Rodríguez](https://www.instagram.com/camilavergarar/). Thank you for
+*Logo design:* [Maria Camila Vergara-Rodríguez](https://www.instagram.com/camilavergarar/). Thank you for
 such an amazing logo, we appreciate your work.
