@@ -125,7 +125,7 @@
     <p>Estimate missing values using Ridge regression</p>
     </div>
 
-    <pre class="usage"><span class='fu'>estimate_ridge</span><span class='op'>(</span><span class='va'>data</span>, diff <span class='op'>=</span> <span class='fl'>1e-05</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>estimate_ridge</span><span class='op'>(</span><span class='va'>data</span>, diff <span class='op'>=</span> <span class='fl'>1e-05</span>, ridge_alpha <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,7 +136,11 @@
     </tr>
     <tr>
       <th>diff</th>
-      <td><p>A number. It is the minimum difference between the estimated value and the value of the immediately before iteration. It works as an exit test for the iterations, smaller its value, the estimation will be more acurate, however it will take a longer time to be estimated. <code>diff</code> is by default 1 e-05.</p></td>
+      <td><p>A number. It is the minimum difference between the estimated value and the value of the immediately before iteration. It works as an exit test for the iterations, smaller its value, the estimation will be more accurate, however it will take a longer time to be estimated. <code>diff</code> is by default 1 e-05.</p></td>
+    </tr>
+    <tr>
+      <th>ridge_alpha</th>
+      <td><p>It is a specific alpha value applied in the Ridge regression. It could give a different penalization and therefore a different estimated value. alpha = 0 by default.</p></td>
     </tr>
     </table>
 
