@@ -28,17 +28,17 @@ estimate_mlr <- function(data, diff = 1e-5){
     }
 
 
-    e1 <- B[1] # Value obtained with the regression
+    estimated_value <- B[1]
     b=2
     for (j in seq_len(ncol(data))){ # Omit the value of the target column, replacing in all columns except where the missing value lies
       if (all(j != c(positions[v,2],c(which(is.na(data[positions[v,1],])))))){ # Check all False
-        e1 = e1 + regresion(b,j)
+        estimated_value = estimated_value + regresion(b,j)
         b=b+1
       }
     }
 
-    # Return e1
-    return(e1)
+    # Return estimated value
+    return(estimated_value)
 
   }
 
@@ -46,11 +46,10 @@ estimate_mlr <- function(data, diff = 1e-5){
   repeat{
     # old estimated values
     old_est_values = vector()
-    g = 1
+
     # Run estimate.mv() in each missing value
     for (mv in seq_len(nrow(positions))){
-      old_est_values[g] <- estimate.mv(mv)
-      g=g+1
+      old_est_values[mv] <- estimate.mv(mv)
     }
     print(old_est_values)
 
@@ -61,11 +60,9 @@ estimate_mlr <- function(data, diff = 1e-5){
 
     # new estimated values
     new_est_values = vector()
-    g=1
 
     for (mv in seq_len(nrow(positions))){
-      new_est_values[g] <- estimate.mv(mv)
-      g=g+1
+      new_est_values[mv] <- estimate.mv(mv)
     }
 
     print(new_est_values)
