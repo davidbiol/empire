@@ -8,7 +8,7 @@ df <- data.frame(x1,x2,x3,x4)
 ## Check it is working right
 
 test_that("Positions are accurately calculated", {
-  expect_equal(pos_miss(df), data.frame(Row=c(3,6,8,2), Col=c(1,1,2,3)))
+  expect_equal(empire::pos_miss(df), data.frame(Row=c(3,6,8,2), Col=c(1,1,2,3)))
 })
 
 ## Testing that the input is a data frame or matrix
