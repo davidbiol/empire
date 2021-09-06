@@ -9,5 +9,5 @@ df <- data.frame(x1,x2,x3,x4)
 
 test_that("Values are accurately estimated", {
   object_mlr <- empire::estimate_mlr(df)
-  expect_equal(obj_mlr$est_values, c(1.386230, 1.499429, 72.574734, 5.633177))
+  expect_equal(object_mlr$est_values, c(1.386230, 1.499429, 72.574734, 5.633177))
 })
