@@ -51,7 +51,6 @@ estimate_mlr <- function(data, diff = 1e-5){
     for (mv in seq_len(nrow(positions))){
       old_est_values[mv] <- estimate.mv(mv)
     }
-    print(old_est_values)
 
     for(i in seq_len(nrow(positions))){
       data[positions[i,1], positions[i,2]] <- old_est_values[i]
@@ -65,7 +64,6 @@ estimate_mlr <- function(data, diff = 1e-5){
       new_est_values[mv] <- estimate.mv(mv)
     }
 
-    print(new_est_values)
     # Catch error, na's in estimation
     tryCatch(if(any(is.na(new_est_values))) stop("na's in estimation"))
 
@@ -75,7 +73,6 @@ estimate_mlr <- function(data, diff = 1e-5){
 
     # Exit test
     conv <- old_est_values - new_est_values
-    print(conv)
     ifelse(all((lapply(conv, abs) < diff)==TRUE), break, next)
 
 

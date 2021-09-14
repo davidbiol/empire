@@ -55,12 +55,10 @@ estimate_ridge <- function(data, diff = 1e-5, ridge_alpha = 0){
   for (mv in seq_len(nrow(positions))){
     ridge_est_values[mv] <- ridge.reg(mv)
   }
-  print("With Ridge Regularization")
 
   for(i in seq_len(nrow(positions))){
     data[positions[i,1], positions[i,2]] <- ridge_est_values[i]
   }
-  print(ridge_est_values)
   # List
   my_list <- list("positions" = positions, "est_values" = ridge_est_values, "new_data" = data)
 
