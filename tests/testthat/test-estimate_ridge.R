@@ -9,5 +9,5 @@ df <- data.frame(x1,x2,x3,x4)
 
 # test_that("Values are accurately estimated", {
 #   object_ridge <- empire::estimate_ridge(df)
-#   expect_equal(obj_ridge$est_values, c(1.386813, 1.504242, 74.948649, 5.739797))
+#   expect_equal(object_ridge$est_values, c(1.386813, 1.504242, 74.948649, 5.739797))
 # })
