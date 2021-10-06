@@ -7,6 +7,11 @@
 #'
 #' @examples
 impute_median <- function(data){
+  # Exceptions
+  if (!is.data.frame(data) & !is.matrix(data)){
+    stop("Data to be evaluated (data) should be a data frame or a matrix")
+  }
+
   positions <- pos_miss(data)
 
   imp_values = vector()
@@ -20,4 +25,5 @@ impute_median <- function(data){
   # List
   my_list <- list("positions" = positions, "imp_values" = imp_values, "new_data" = new_data)
 
+  return(my_list)
 }
