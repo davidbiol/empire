@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# empire: Estimation of Missing Data using Penalized Iterative Regressions <a href='https://github.com/davidbiol/empire'><img src='man/figures/logo.png' align="right" height="139"/></a>
+# empire: Estimation of Missing Data using Penalized Iterative Regressions <a href='https://davidbiol.github.io/empire/'><img src='man/figures/logo.png' align="right" height="139"/></a>
 
 <!-- badges: start -->
 
