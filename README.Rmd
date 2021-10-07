@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # empire: Estimation of Missing Data using Penalized Iterative Regressions <a href='https://davidbiol.github.io/empire/'><img src='man/figures/logo.png' align="right" height="139"/></a>
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/empire)](https://CRAN.R-project.org/package=empire)
 [![R-CMD-check](https://github.com/davidbiol/empire/workflows/R-CMD-check/badge.svg)](https://github.com/davidbiol/empire/actions)
 [![Codecov test coverage](https://codecov.io/gh/davidbiol/empire/branch/master/graph/badge.svg)](https://codecov.io/gh/davidbiol/empire?branch=master)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
