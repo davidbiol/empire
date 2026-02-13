@@ -59,13 +59,14 @@ estimate_ridge <- function(data, diff = 1e-5, ridge_alpha = 0){
     Y = as.matrix(complete_data[positions[v,2]])
     if (length(data[positions[v,1],][is.na(data[positions[v,1],])])!=1){
       X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-c(positions[v,2], c(which(is.na(data[positions[v,1],]))))]))
-    }
-    else {
+    } else {
       X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-(positions[v,2])]))
     }
     XtX <- t(X)%*%X
-    XtX.1 <- solve(XtX)
-    B <- XtX.1%*%t(X)%*%Y # Calculate coefficients
+    #Ridge penalization
+    cv.out=glmnet::cv.glmnet(X,Y,alpha=ridge_alpha)
+    bestlam=cv.out$lambda.min
+    B <- solve(XtX + bestlam*diag(1,nrow(XtX)))%*%t(X)%*%Y #Calculate coefficients with Ridge Lambda penalization
 
     regresion <- function(b1,b2){   # Regression function
       B[b1]*data[positions[v,1],b2]

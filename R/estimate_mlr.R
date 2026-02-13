@@ -15,8 +15,7 @@ estimate_mlr <- function(data, diff = 1e-5){
     Y = as.matrix(complete_data[positions[v,2]])
     if (length(data[positions[v,1],][is.na(data[positions[v,1],])])!=1){
       X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-c(positions[v,2], c(which(is.na(data[positions[v,1],]))))]))
-    }
-    else {
+    } else {
       X = as.matrix(cbind(c(rep(1, nrow(Y))), complete_data[-(positions[v,2])]))
     }
     XtX <- t(X)%*%X
@@ -72,7 +71,7 @@ estimate_mlr <- function(data, diff = 1e-5){
     }
 
     # Exit test
-    conv <- old_est_values - new_est_values
+    conv <- as.numeric(old_est_values) - as.numeric(new_est_values)
     ifelse(all((lapply(conv, abs) < diff)==TRUE), break, next)
 
 
